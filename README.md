@@ -17,7 +17,7 @@ Don't forget to write unit tests - `github.com/go-test/deep` and `https://github
 ### Step by step instructions
 
 1. Run the application in the solution folder: `pushd solution && go run . && popd`
-2. Test access to the Ghibli API we'll consume: `curl https://ghibliapi.vercel.app/films?fields=title,description,releasedate`
+2. Test access to the Ghibli API we'll consume: `curl https://ghibliapi.vercel.app/films?fields=title,description,release_date`
 3. Create a new go module, with the `go mod init` command
 4. Create a file named `model.go`. In it, define a type `Movie` that's a struct containing 3 fields, `Title`, `Description` and `ReleaseDate`. Add json tags so that you can parse that type from the response of the Ghibli movie API.
 5. In a file named `movie_fetcher.go`, define a struct type `MovieFetcher`, with a `GetMovies` method. It should take no arguments, and return a slice of `Movies` and an `error`. Complete the method body by calling the Ghibli movie API with the help of the `http.Get` function from the standard library, and parse what's returned with `json.NewDecoder`. Don't forget to wrap errors to add more context, to close the response body (to avoid resource leak) or to check the status code of the response you get from the API.
